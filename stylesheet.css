@@ -9,17 +9,7 @@ body {
 	overflow-x:hidden;
 }
 
-.image-slider {
-	display: flex;
-	overflow: hidden;
-	margin-top: 20px;
-  }
-  
-.image-slider img {
-	width: 100%;
-	height: auto;
-	display: none;
-}
+
 
 
 .container {
