@@ -8,6 +8,23 @@ body {
 	transition:background-color linear 5s;
 	overflow-x:hidden;
 }
+
+/* CSS for the image slider */
+.image-slider {
+	display: flex;
+	overflow: hidden;
+	margin-top: 20px;
+  }
+  
+  .image-slider img {
+	width: 100%;
+	height: auto;
+	display: none;
+  }
+  
+  
+
+
 .container {
 	display: none;
 }

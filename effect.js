@@ -19,6 +19,10 @@ $('document').ready(function(){
 		});
 
 	$('#turn_on').click(function(){
+
+		
+
+
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
 		$('#bulb_red').addClass('bulb-glow-red');
 		$('#bulb_blue').addClass('bulb-glow-blue');
@@ -28,7 +32,10 @@ $('document').ready(function(){
 		$('body').addClass('peach');
 		$(this).fadeOut('slow').delay(5000).promise().done(function(){
 			$('#play').fadeIn('slow');
+
+		
 		});
+		
 	});
 	$('#play').click(function(){
 		var audio = $('.song')[0];
@@ -186,6 +193,7 @@ $('document').ready(function(){
 		});
 		
 		var i;
+		var imageSlider = $('.image-slider img');
 
 		function msgLoop (i) {
 			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
@@ -203,4 +211,21 @@ $('document').ready(function(){
 		}
 		msgLoop(0);
 	});
+
+	function startImageSlider() {
+		var imageSlider = $('.image-slider img');
+		imageSlider.eq(0).fadeIn('slow');
+		var currentIndex = 0;
+	  
+		function nextImage() {
+		  imageSlider.eq(currentIndex).fadeOut('slow');
+		  currentIndex = (currentIndex + 1) % imageSlider.length;
+		  imageSlider.eq(currentIndex).fadeIn('slow');
+		}
+	  
+		var imageInterval = setInterval(nextImage, 3000); // Change images every 3 seconds (adjust as needed)
+	  }
+
+	
+
 });
