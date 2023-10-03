@@ -9,20 +9,17 @@ body {
 	overflow-x:hidden;
 }
 
-/* CSS for the image slider */
 .image-slider {
 	display: flex;
 	overflow: hidden;
 	margin-top: 20px;
   }
   
-  .image-slider img {
+.image-slider img {
 	width: 100%;
 	height: auto;
 	display: none;
-  }
-  
-  
+}
 
 
 .container {

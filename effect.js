@@ -185,46 +185,43 @@ $('document').ready(function(){
 			$('#story').fadeIn('slow');
 		});
 	});
-	
-	$('#story').click(function(){
-		$(this).fadeOut('slow');
-		$('.cake').fadeOut('fast').promise().done(function(){
-			$('.message').fadeIn('slow');
-		});
-		
-		var i;
-		var imageSlider = $('.image-slider img');
 
-		function msgLoop (i) {
-			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
-			i=i+1;
-			$("p:nth-child("+i+")").fadeIn('slow').delay(1000);
-			if(i==50){
-				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
-					function startImageSlider() {
-						var imageSlider = $('.image-slider img');
-						imageSlider.eq(0).fadeIn('slow');
-						var currentIndex = 0;
-					  
-						function nextImage() {
-						  imageSlider.eq(currentIndex).fadeOut('slow');
-						  currentIndex = (currentIndex + 1) % imageSlider.length;
-						  imageSlider.eq(currentIndex).fadeIn('slow');
-						}
-					  
-						var imageInterval = setInterval(nextImage, 3000); // Change images every 3 seconds (adjust as needed)
-					  }
-				});
+	var imageUrls = [
+		'b1.png',
+		'b2.png',
+		'b3.png',
+		// Add more image URLs as needed
+	];
+	
+	var currentImageIndex = 0;
+
+	$('#story').click(function () {
+		$(this).fadeOut('slow');
+		$('.message').fadeOut('fast').promise().done(function () {
+			// Create an image element and set its source to the current image URL
+			var img = $('<img>').attr('src', imageUrls[currentImageIndex]);
+			// Append the image to the container where you want to display it
+			$('.image-container').append(img);
+	
+			// Increase the current image index for the next image
+			currentImageIndex++;
+	
+			// Check if all images have been displayed
+			if (currentImageIndex < imageUrls.length) {
+				// If not, fade in the next image after a delay
+				setTimeout(function () {
+					$('#story').click(); // Trigger the click event to show the next image
+				}, 3000); // Adjust the delay as needed (in milliseconds)
+			} else {
+				// All images have been displayed, you can proceed with your next steps here
+				$('.cake').fadeIn('fast');
 			}
-			else{
-				msgLoop(i);
-			}			
 		});
-		}
-		msgLoop(0);
 	});
 
 	
+
+
 
 	
 
