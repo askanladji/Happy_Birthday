@@ -201,7 +201,19 @@ $('document').ready(function(){
 			$("p:nth-child("+i+")").fadeIn('slow').delay(1000);
 			if(i==50){
 				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
-					$('.cake').fadeIn('fast');
+					function startImageSlider() {
+						var imageSlider = $('.image-slider img');
+						imageSlider.eq(0).fadeIn('slow');
+						var currentIndex = 0;
+					  
+						function nextImage() {
+						  imageSlider.eq(currentIndex).fadeOut('slow');
+						  currentIndex = (currentIndex + 1) % imageSlider.length;
+						  imageSlider.eq(currentIndex).fadeIn('slow');
+						}
+					  
+						var imageInterval = setInterval(nextImage, 3000); // Change images every 3 seconds (adjust as needed)
+					  }
 				});
 			}
 			else{
@@ -212,19 +224,7 @@ $('document').ready(function(){
 		msgLoop(0);
 	});
 
-	function startImageSlider() {
-		var imageSlider = $('.image-slider img');
-		imageSlider.eq(0).fadeIn('slow');
-		var currentIndex = 0;
-	  
-		function nextImage() {
-		  imageSlider.eq(currentIndex).fadeOut('slow');
-		  currentIndex = (currentIndex + 1) % imageSlider.length;
-		  imageSlider.eq(currentIndex).fadeIn('slow');
-		}
-	  
-		var imageInterval = setInterval(nextImage, 3000); // Change images every 3 seconds (adjust as needed)
-	  }
+	
 
 	
 
